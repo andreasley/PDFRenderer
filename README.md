@@ -31,6 +31,14 @@ The goal is to make printing from a SwiftUI app as simple as possible.
 
 * ⚠️ Barely tested
 
+# Run the SampleApp
+
+To run the SampleApp, you need to set your development team by duplicating the file `Config.xcconfig.template`, renaming it to `Config.xcconfig` and update it with your Development Team Identifier:
+ 
+```
+DEVELOPMENT_TEAM = <YOUR_DEVELOPMENT_TEAM_IDENTIFIER>
+```
+
 # Usage
 
 To define a page layout, regular SwiftUI code can be used – with a few special functions to enable print-specific features.
@@ -38,6 +46,11 @@ To define a page layout, regular SwiftUI code can be used – with a few special
 ```swift
 import SwiftUI
 import PDFRenderer
+import PDFKit
+
+// Render the template to a `PDFDocument`
+let document: PDFDocument = try await PrintTemplate().renderToPdf()
+
 
 struct PrintTemplate : View
 {
